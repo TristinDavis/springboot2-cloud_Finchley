@@ -1,5 +1,5 @@
 import com.aha.tech.TemplateApplication;
-import com.aha.tech.commons.utils.DateUtil;
+import com.aha.tech.base.commons.utils.DateUtil;
 import com.aha.tech.model.entity.ProductEntity;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.RandomUtils;

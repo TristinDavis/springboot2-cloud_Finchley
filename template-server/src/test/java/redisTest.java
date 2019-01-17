@@ -1,5 +1,5 @@
 import com.aha.tech.TemplateApplication;
-import com.aha.tech.commons.utils.IpUtil;
+import com.aha.tech.base.commons.utils.IpUtil;
 import com.aha.tech.utils.KeyGenerateUtil;
 import com.aha.tech.utils.SpringContextUtil;
 import com.google.common.collect.Maps;

@@ -1,7 +1,7 @@
 package com.aha.tech.base.aop;
 
-import com.aha.tech.commons.constants.ResponseConstants;
-import com.aha.tech.commons.response.RpcResponse;
+import com.aha.tech.base.commons.constants.ResponseConstants;
+import com.aha.tech.base.commons.response.RpcResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;

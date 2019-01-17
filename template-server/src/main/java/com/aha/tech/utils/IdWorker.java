@@ -1,6 +1,6 @@
 package com.aha.tech.utils;
 
-import com.aha.tech.commons.utils.IpUtil;
+import com.aha.tech.base.commons.utils.IpUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;

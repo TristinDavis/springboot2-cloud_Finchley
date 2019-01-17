@@ -1,6 +1,6 @@
 //package com.aha.tech.config;
 //
-//import com.aha.tech.commons.response.RpcResponse;
+//import com.aha.tech.templateserver.commons.response.RpcResponse;
 //import com.fasterxml.jackson.databind.ObjectMapper;
 //import com.netflix.hystrix.exception.HystrixBadRequestException;
 //import feign.Response;

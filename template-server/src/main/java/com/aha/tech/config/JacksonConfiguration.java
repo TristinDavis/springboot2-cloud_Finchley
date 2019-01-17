@@ -1,6 +1,6 @@
 package com.aha.tech.config;
 
-import com.aha.tech.commons.utils.DateUtil;
+import com.aha.tech.base.commons.utils.DateUtil;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.*;

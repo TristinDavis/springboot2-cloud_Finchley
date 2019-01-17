@@ -1,6 +1,6 @@
 package com.aha.tech.config;
 
-import com.aha.tech.commons.response.RpcResponse;
+import com.aha.tech.base.commons.response.RpcResponse;
 import com.fasterxml.classmate.types.ResolvedObjectType;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;

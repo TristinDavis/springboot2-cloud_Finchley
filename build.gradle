@@ -57,8 +57,7 @@ subprojects {
         compile('com.google.guava:guava:23.0')
         compile('org.apache.commons:commons-lang3')
         compile('com.alibaba:fastjson:1.2.47')
+        compile ('cn.hutool:hutool-core:4.2.1')
 
-        // ahaschool
-        compile('com.aha.public:aha-commons-utils:1.2.3')
     }
 }
