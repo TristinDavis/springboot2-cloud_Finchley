@@ -1,0 +1,64 @@
+//子项目配置
+buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            url 'http://testm.ahaschool.com:9200/nexus/content/groups/public/'
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:1.0.5.RELEASE")
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            mavenLocal()
+            url 'http://testm.ahaschool.com:9200/nexus/content/groups/public/'
+            maven { url 'http://testm.ahaschool.com:9200/nexus/content/groups/public/' }
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'https://repo.spring.io/libs-milestone' }
+            maven { url 'https://jitpack.io' }
+        }
+    }
+}
+
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'eclipse'
+    apply plugin: 'maven'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    [compileJava, compileTestJava].each()
+            {
+                it.options.encoding = "UTF-8"
+            }
+
+    dependencies {
+
+        // swagger dependency
+        compile('io.swagger:swagger-annotations:1.5.16')
+        compile('io.springfox:springfox-swagger2:2.8.0')
+        compile('io.springfox:springfox-swagger-ui:2.8.0')
+
+        // 3-part tool dependency
+        compile('com.google.guava:guava:23.0')
+        compile('org.apache.commons:commons-lang3')
+        compile('com.alibaba:fastjson:1.2.47')
+
+        // ahaschool
+        compile('com.aha.public:aha-commons-utils:1.2.3')
+    }
+}

@@ -1,0 +1,3 @@
+rootProject.name = 'aha-template-server'
+include 'template-server'
+include 'template-spi'
