@@ -1,6 +1,9 @@
 package com.aha.tech.base.aop;
 
+import com.aha.tech.base.commons.exception.BaseException;
+import com.aha.tech.base.commons.utils.DateUtil;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -24,7 +27,7 @@ import java.util.Arrays;
 @Component
 public class WebLoggingAspect {
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(WebLoggingAspect.class);
+    public static final Logger logger = LoggerFactory.getLogger(WebLoggingAspect.class);
 
     @Resource
     private ThreadPoolTaskExecutor nonCoreThreadPool;
@@ -55,7 +58,7 @@ public class WebLoggingAspect {
      * @param now
      */
     public void printRequestInfo(String ip, String url, String params, LocalDateTime now) {
-        nonCoreThreadPool.submit(() -> LOGGER.info("Received from ip : {} request url : {} with params : {} at {}", ip, url, params, now));
+        nonCoreThreadPool.submit(() -> logger.info("Received from ip : {} request url : {} with params : {} at {}", ip, url, params, now));
     }
 
     /**
@@ -70,7 +73,26 @@ public class WebLoggingAspect {
 //        stopWatch.start();
 //        pjp.proceed(pjp.getArgs());
 //        stopWatch.stop();
-//        LOGGER.info("cost {} ms", stopWatch.getTotalTimeMillis());
+//        logger.info("cost {} ms", stopWatch.getTotalTimeMillis());
 //    }
+
+    /**
+     * 在方法抛出异常后调用通知
+     */
+    @AfterThrowing(pointcut = "execution(* com.aha.tech.controller.*.*(..))",throwing = "ex")
+    public void printError(JoinPoint joinPoint,Throwable ex){
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        String invokeIp = request.getRemoteAddr();
+        String invokeUrl = request.getRequestURL().toString();
+        Object[] invokeParams = joinPoint.getArgs();
+
+        // 添加不需要打印error的错误类,比如SystemException
+        if(ex instanceof BaseException){
+           // logger.warn or no handler
+        }else{
+            logger.error("un catch error : {} ====> invokeIp : {},invokeUrl : {},invokeParams : {}, time : {}",ex,invokeIp,invokeUrl,invokeParams,DateUtil.currentDateByDefaultFormat());
+        }
+    }
 
 }

@@ -30,7 +30,7 @@
 //@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //public class MybatisTest {
 //
-//    private Logger LOGGER = LoggerFactory.getLogger(MybatisTest.class);
+//    private Logger logger = LoggerFactory.getLogger(MybatisTest.class);
 //
 //    @Resource
 //    private UserMapper userMapper;
@@ -40,8 +40,8 @@
 //
 //    @Before
 //    public void readMe() {
-//        LOGGER.info("运行本用例,需要保证test.sql脚本运行成功,并且检查2个数据源是否配置正确");
-//        LOGGER.info("application-${profile}.properties中的 readdb.enable = on 记得要配置");
+//        logger.info("运行本用例,需要保证test.sql脚本运行成功,并且检查2个数据源是否配置正确");
+//        logger.info("application-${profile}.properties中的 readdb.enable = on 记得要配置");
 //    }
 //
 //    @Test
@@ -54,7 +54,7 @@
 //        userEntity.setCreatedAt(new Date());
 //        userEntity.setUpdatedAt(new Date());
 //
-//        LOGGER.debug("开始插入 userEntity : {} ", userEntity);
+//        logger.debug("开始插入 userEntity : {} ", userEntity);
 //        int insetRow = userMapper.insert(userEntity);
 //        Assert.assertTrue("插入失败", insetRow > 0);
 //
@@ -94,7 +94,7 @@
 //    public void findOne() {
 //        Long userId = 1L;
 //        UserEntity userEntity = userMapper.selectByPrimaryKey(userId);
-//        LOGGER.debug("user : {}", userEntity);
+//        logger.debug("user : {}", userEntity);
 //        Assert.assertTrue("未查询到数据", userEntity == null);
 //    }
 //
@@ -103,7 +103,7 @@
 //     */
 //    @Test
 //    public void page() {
-//        LOGGER.debug("运行前提是库里的,t_user行数超过10,用例将会使用分页插件,不需要在sql中指定limit等方法");
+//        logger.debug("运行前提是库里的,t_user行数超过10,用例将会使用分页插件,不需要在sql中指定limit等方法");
 //        // 一页10条
 //        Integer limit = 10;
 //        // 从第几条开始取,第一条的offset = 0
@@ -118,12 +118,12 @@
 //        PageHelper.offsetPage(1, limit);
 //        List<ReadEntity> readEntityList = readMapper.selectAll();
 //        Assert.assertTrue("page plugin error,may be not really error !", readEntityList.size() == limit);
-//        LOGGER.debug("page : {} ", readEntityList);
+//        logger.debug("page : {} ", readEntityList);
 //    }
 //
 //    @Test
 //    public void dataSourceTest() {
-//        LOGGER.debug("多数据源测试,在一个线程中操作2个datasource");
+//        logger.debug("多数据源测试,在一个线程中操作2个datasource");
 //        UserEntity userEntity = new UserEntity();
 //        userEntity.setUserId(RandomUtils.nextLong());
 //        userEntity.setName("读写库的资源");
@@ -142,7 +142,7 @@
 //    @Test
 //    @Transactional(value = "readwriteTransactionManager")
 //    public void readWriteTransaction() {
-//        LOGGER.debug("指定读写库的transactional");
+//        logger.debug("指定读写库的transactional");
 //        UserEntity userEntity = new UserEntity();
 //        userEntity.setUserId(RandomUtils.nextLong());
 //        userEntity.setName("插入一条记录,然后让其异常");
@@ -155,7 +155,7 @@
 //    @Test
 //    @Transactional(value = "readTransactionManager")
 //    public void readTransaction() {
-//        LOGGER.debug("指定读库的transactional");
+//        logger.debug("指定读库的transactional");
 //        ReadEntity readEntity = new ReadEntity();
 //        readEntity.setAge(16);
 //        readEntity.setUserId(RandomUtils.nextLong());
@@ -170,13 +170,13 @@
 //
 //    @Test
 //    public void useExample() {
-//        LOGGER.info("单表的crud 尽可能不去写 mapper.xml,因为麻烦");
+//        logger.info("单表的crud 尽可能不去写 mapper.xml,因为麻烦");
 //        Long userId = 1L;
-//        LOGGER.info("定义userId,需要先在数据库插入一条数据");
+//        logger.info("定义userId,需要先在数据库插入一条数据");
 //
 //        UserEntity userEntity = userMapperExample.findByUserId(userId);
 //        Assert.assertTrue("not found", userEntity != null);
-//        LOGGER.debug("user userEntity : {}", userEntity);
+//        logger.debug("user userEntity : {}", userEntity);
 //
 //        UserEntity afterEntity = new UserEntity();
 //        afterEntity.setName("我是火车王 wuwuwuwuwuwuwu");

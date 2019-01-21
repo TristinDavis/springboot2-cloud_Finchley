@@ -31,7 +31,7 @@
 //@SpringBootTest(classes = TemplateApplication.class)
 //public class RestTemplateTest {
 //
-//    private Logger LOGGER = LoggerFactory.getLogger(RestTemplateTest.class);
+//    private Logger logger = LoggerFactory.getLogger(RestTemplateTest.class);
 //
 //
 //    @Autowired
@@ -39,32 +39,32 @@
 //
 //    @Before
 //    public void before() {
-//        LOGGER.info("如果测试的uri是自己项目,需要先启动自己项目,否则链接拒绝!");
+//        logger.info("如果测试的uri是自己项目,需要先启动自己项目,否则链接拒绝!");
 //    }
 //
 //    @Test
 //    public void restGet() throws URISyntaxException {
-//        LOGGER.debug("get 请求使用 restTemplate.getForObject(URI,Response.class)");
+//        logger.debug("get 请求使用 restTemplate.getForObject(URI,Response.class)");
 //        Long userId = 123L;
-//        LOGGER.debug("rest的get请求,必须要用URI,如果使用String类型的url,其中的符号会导致请求不能解析");
+//        logger.debug("rest的get请求,必须要用URI,如果使用String类型的url,其中的符号会导致请求不能解析");
 //        String url = String.format("http://localhost:9892/paymentserver/rest/get/%s", userId);
 //        RpcResponse resp = restTemplate.getForObject(new URI(url), RpcResponse.class);
-//        LOGGER.debug("resp : {}", resp);
+//        logger.debug("resp : {}", resp);
 //    }
 //
 //    @Test
 //    public void get() {
-//        LOGGER.debug("非rest的get请求");
+//        logger.debug("非rest的get请求");
 //        Map<String, Object> params = Maps.newHashMap();
 //        params.put("user_id", 456L);
 //        RpcResponse resp2 = restTemplate.getForObject("http://localhost:9892/paymentserver/get", RpcResponse.class, params);
 //
-//        LOGGER.debug("resp2 : {}", resp2);
+//        logger.debug("resp2 : {}", resp2);
 //    }
 //
 //    @Test
 //    public void post() {
-//        LOGGER.debug("rest template post 请求");
+//        logger.debug("rest template post 请求");
 //        UserRequestDto userRequestDTO = new UserRequestDto();
 //
 //    }
@@ -88,24 +88,24 @@
 ////        authorizationRequestDTO.setSessionId("1561804008asdasd4");
 ////        authorizationRequestDTO.setSessionName("asdjkhadsgfpgf");
 ////        authorizationRequestDTO.setVersion("V2");
-////        LOGGER.debug("rest的get请求,必须要用URI,如果使用String类型的url,其中的符号会导致请求不能解析");
+////        logger.debug("rest的get请求,必须要用URI,如果使用String类型的url,其中的符号会导致请求不能解析");
 ////        String url = "http://ahadev:9893/passportserver/authorization/grant";
 ////        HttpEntity<AuthorizationRequestDTO> entity = new HttpEntity<>(authorizationRequestDTO);
 ////
 ////        RpcResponse resp = restTemplate.postForObject(new URI(url), entity, RpcResponse.class);
-////        LOGGER.debug("resp : {}", resp);
+////        logger.debug("resp : {}", resp);
 ////        AccessTokenVO accessTokenVO = new AccessTokenVO();
 ////        BeanUtil.transMap2Bean((Map<String, Object>) resp.getData(), accessTokenVO, true);
 ////
-////        LOGGER.debug("accessTokenVO : {}", accessTokenVO);
+////        logger.debug("accessTokenVO : {}", accessTokenVO);
 ////        ResponseEntity.status(1);
 ////        BeanUtil.convertMap(AccessTokenVO.class, (Map) resp.getData(),Boolean.TRUE);
 ////        AccessTokenVO accessTokenVO = resp.getData();
-////        LOGGER.debug("accessTokenVO : {}", accessTokenVO);
+////        logger.debug("accessTokenVO : {}", accessTokenVO);
 //
 ////        AccessTokenVO accessTokenVO = JSON.parseObject(resp,AccessTokenVO.class);
 //
-////        LOGGER.debug("accessTokenVO : {}", accessTokenVO);
+////        logger.debug("accessTokenVO : {}", accessTokenVO);
 //    }
 //
 //    public static void main(String[] args) throws IllegalAccessException, IntrospectionException, InvocationTargetException {
