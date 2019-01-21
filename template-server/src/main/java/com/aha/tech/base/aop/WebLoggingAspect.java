@@ -80,7 +80,7 @@ public class WebLoggingAspect {
      * 在方法抛出异常后调用通知
      */
     @AfterThrowing(pointcut = "execution(* com.aha.tech.controller.*.*(..))",throwing = "ex")
-    public void printError(JoinPoint joinPoint,Throwable ex){
+    public void afterThrowingPrintInfo(JoinPoint joinPoint,Throwable ex){
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         String invokeIp = request.getRemoteAddr();
